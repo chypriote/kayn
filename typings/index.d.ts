@@ -9,8 +9,8 @@ declare module 'kayn' {
 
         public ChampionMastery: {
             get: (summonerID: string) => (championID: number) => KaynRequest<dtos.ChampionMasteryV4ChampionMasteryDTO>
-            list: (summonerID: number) => KaynRequest<dtos.ChampionMasteryV4ChampionMasteryDTO[]>
-            totalScore: (summonerID: number) => KaynRequest<number>
+            list: (summonerID: string) => KaynRequest<dtos.ChampionMasteryV4ChampionMasteryDTO[]>
+            totalScore: (summonerID: string) => KaynRequest<number>
         }
 
         public Champion: {
@@ -76,7 +76,9 @@ declare module 'kayn' {
             }
 
             Entries: {
-                bySummonerID: (encryptedSummonerID: string) => KaynRequest<dtos.LeagueV4LeagueEntryDTO[]>
+                by: {
+                    summonerID: (encryptedSummonerID: string) => KaynRequest<dtos.LeagueV4LeagueEntryDTO[]>
+                }
                 list: (queue: queueName, tier: string, division: string) => KaynRequest<dtos.LeagueV4LeagueEntryDTO[]>
             }
         }
@@ -119,6 +121,7 @@ declare module 'kayn' {
                 name: (name: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
                 id: (id: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
                 accountID: (accountID: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
+                puuid: (puuid: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
             }
         }
 
