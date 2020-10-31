@@ -1,4 +1,4 @@
-import * as dtos from './dtos'
+import * as lolDtos from './lol-dtos'
 import * as ddragonDtos from './ddragon-dtos'
 
 declare module 'kayn' {
@@ -8,24 +8,24 @@ declare module 'kayn' {
         flushCache(cb?: callback<'OK'>): Promise<'OK'>
 
         public ChampionMastery: {
-            get: (summonerID: string) => (championID: number) => KaynRequest<dtos.ChampionMasteryV4ChampionMasteryDTO>
-            list: (summonerID: string) => KaynRequest<dtos.ChampionMasteryV4ChampionMasteryDTO[]>
+            get: (summonerID: string) => (championID: number) => KaynRequest<lolDtos.ChampionMasteryV4ChampionMasteryDTO>
+            list: (summonerID: string) => KaynRequest<lolDtos.ChampionMasteryV4ChampionMasteryDTO[]>
             totalScore: (summonerID: string) => KaynRequest<number>
         }
 
         public Champion: {
             Rotation: {
-                list: () => KaynRequest<dtos.ChampionV3ChampionInfo>
+                list: () => KaynRequest<lolDtos.ChampionV3ChampionInfo>
             }
         }
 
         public Challenger: {
-            list: (queueName: queueName) => KaynRequest<dtos.LeagueV4LeagueListDTO>
+            list: (queueName: queueName) => KaynRequest<lolDtos.LeagueV4LeagueListDTO>
         }
 
         public CurrentGame: {
             by: {
-                summonerID: (summonerID: string) => KaynRequest<dtos.SpectatorV4CurrentGameInfo>
+                summonerID: (summonerID: string) => KaynRequest<lolDtos.SpectatorV4CurrentGameInfo>
             }
         }
 
@@ -72,56 +72,56 @@ declare module 'kayn' {
 
         public League: {
             by: {
-                uuid: (leagueUUID: string) => KaynRequest<dtos.LeagueV4LeagueListDTO>
+                uuid: (leagueUUID: string) => KaynRequest<lolDtos.LeagueV4LeagueListDTO>
             }
 
             Entries: {
                 by: {
-                    summonerID: (encryptedSummonerID: string) => KaynRequest<dtos.LeagueV4LeagueEntryDTO[]>
+                    summonerID: (encryptedSummonerID: string) => KaynRequest<lolDtos.LeagueV4LeagueEntryDTO[]>
                 }
-                list: (queue: queueName, tier: string, division: string) => KaynRequest<dtos.LeagueV4LeagueEntryDTO[]>
+                list: (queue: queueName, tier: string, division: string) => KaynRequest<lolDtos.LeagueV4LeagueEntryDTO[]>
             }
         }
 
         public Master: {
-            list: (queueName: queueName) => KaynRequest<dtos.LeagueV4LeagueListDTO>
+            list: (queueName: queueName) => KaynRequest<lolDtos.LeagueV4LeagueListDTO>
         }
 
         public Grandmaster: {
-            list: (queueName: queueName) => KaynRequest<dtos.LeagueV4LeagueListDTO>
+            list: (queueName: queueName) => KaynRequest<lolDtos.LeagueV4LeagueListDTO>
         }
 
         public Match: {
-            get: (matchID: number) => KaynRequest<dtos.MatchV4MatchDTO>
-            timeline: (matchID: number) => KaynRequest<dtos.MatchV4MatchTimelineDTO>
+            get: (matchID: number) => KaynRequest<lolDtos.MatchV4MatchDTO>
+            timeline: (matchID: number) => KaynRequest<lolDtos.MatchV4MatchTimelineDTO>
 
             Tournament: {
                 listMatchIDs: (tournamentCode: string) => KaynRequest<number[]>
-                get: (matchID: number, tournamentCode: string) => KaynRequest<dtos.MatchV4MatchDTO>
+                get: (matchID: number, tournamentCode: string) => KaynRequest<lolDtos.MatchV4MatchDTO>
             }
         }
 
         public Matchlist: {
             by: {
-                accountID: (accountID: string) => KaynRequest<dtos.MatchV4MatchlistDTO>
+                accountID: (accountID: string) => KaynRequest<lolDtos.MatchV4MatchlistDTO>
             }
             Recent: {
                 by: {
-                    accountID: (accountID: string) => KaynRequest<dtos.MatchV4MatchlistDTO>
+                    accountID: (accountID: string) => KaynRequest<lolDtos.MatchV4MatchlistDTO>
                 }
             }
         }
 
         public Status: {
-            get: () => KaynRequest<dtos.LolStatusV3ShardStatus>
+            get: () => KaynRequest<lolDtos.LolStatusV3ShardStatus>
         }
 
         public Summoner: {
             by: {
-                name: (name: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
-                id: (id: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
-                accountID: (accountID: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
-                puuid: (puuid: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
+                name: (name: string) => KaynRequest<lolDtos.SummonerV4SummonerDTO>
+                id: (id: string) => KaynRequest<lolDtos.SummonerV4SummonerDTO>
+                accountID: (accountID: string) => KaynRequest<lolDtos.SummonerV4SummonerDTO>
+                puuid: (puuid: string) => KaynRequest<lolDtos.SummonerV4SummonerDTO>
             }
         }
 
@@ -132,17 +132,17 @@ declare module 'kayn' {
         }
 
         public TournamentStub: {
-            create: (tournamentID: number, body?: dtos.TournamentStubV4TournamentCodeParameters) => KaynRequest<string[]>
-            lobbyEvents: (tournamentCode: string) => KaynRequest<dtos.TournamentStubV4LobbyEventDTOWrapper>
+            create: (tournamentID: number, body?: lolDtos.TournamentStubV4TournamentCodeParameters) => KaynRequest<string[]>
+            lobbyEvents: (tournamentCode: string) => KaynRequest<lolDtos.TournamentStubV4LobbyEventDTOWrapper>
             registerProviderData: (region: string, callbackURL: string) => KaynRequest<number>
             register: (providerID: number, name?: string) => KaynRequest<number>
         }
 
         public Tournament: {
-            create: (tournamentID: number, body?: dtos.TournamentV4TournamentCodeParameters) => KaynRequest<string[]>
-            update: (tournamentCode: string, body: dtos.TournamentV4TournamentCodeUpdateParameters) => KaynRequest<void>
-            get: (tournamentCode: string) => KaynRequest<dtos.TournamentV4TournamentCodeDTO>
-            lobbyEvents: (tournamentCode: string) => KaynRequest<dtos.TournamentV4LobbyEventDTOWrapper>
+            create: (tournamentID: number, body?: lolDtos.TournamentV4TournamentCodeParameters) => KaynRequest<string[]>
+            update: (tournamentCode: string, body: lolDtos.TournamentV4TournamentCodeUpdateParameters) => KaynRequest<void>
+            get: (tournamentCode: string) => KaynRequest<lolDtos.TournamentV4TournamentCodeDTO>
+            lobbyEvents: (tournamentCode: string) => KaynRequest<lolDtos.TournamentV4LobbyEventDTOWrapper>
             registerProviderData: (region: string, callbackURL: string) => KaynRequest<number>
             register: (providerID: number, name?: string) => KaynRequest<number>
         }
@@ -203,7 +203,6 @@ declare class KaynDDragonRequest<T> {
 
 type callback<T> = (err: KaynError, data: T) => void
 
-// a lot of these are temp and will be improved in later releases.
 type serviceName = string
 type methodName = string
 type endpoint = string
